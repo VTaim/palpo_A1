@@ -1,0 +1,29 @@
+PREFIX : <http://example.org/fi-tut-math-sm-calvin-and-hobbes/> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX fam: <http://purl.org/vocab/relationship/> 
+
+# List things with a known type which are not (known to be) close friends of Calvin (?).
+# (Note that e.g. Hobbes is in the list even if asserted the the property is symmetric!)
+
+# Think carefully what this query does! (Asserted statements vs. inferred statements
+# vs. OWA vs. "negation", etc.!) 
+
+# Note that this result is basically locally exercising CWA (!) and hence might give 
+# "stronger" results than what you could achieve with, using, OWL...
+
+# How might using an entailment regime change the result?
+
+
+# ON 2015
+
+SELECT DISTINCT ?s
+WHERE {
+ ?s a ?c .
+ FILTER NOT EXISTS { ?s fam:closeFriendOf :Calvin }
+}
+
+
+
+

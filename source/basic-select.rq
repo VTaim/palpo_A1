@@ -1,0 +1,16 @@
+PREFIX : <http://example.org/fi-tut-math-sm-calvin-and-hobbes/> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+# Everything that has been asserted about Calvin:
+
+SELECT ?s ?p ?o
+WHERE {
+ ?s ?p ?o .
+ FILTER sameTerm(?s, :Calvin)
+}
+
+# Or (after downloading it etc.) try with ./pellet.sh query -q my/query.rq my/data.rdf
+
+
