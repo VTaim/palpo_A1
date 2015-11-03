@@ -1,0 +1,31 @@
+PREFIX : <http://example.org/fi-tut-math-sm-calvin-and-hobbes/> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+# Remove the (ground) statement that Calvin is a boy and insert a
+# statement that Calvin is the superhero called (the) "Stupendous Man".
+
+# Note: If there was some other Boy called Calvin in our model, we'd now do this 
+# for him as well. (Think how to improve!)
+
+# Note: Even if Calvin might want it, we cannot delete e.g. the assignment 
+# because it was specified using a blank node (well, we would add garbage to e.g. 
+# obscure the assignment...) 
+# Also, we can "remove" any inferred statements only indirectly, by modifying the axioms, 
+# etc. (Some tasks are impossible even for the Stupendous Man ...)
+
+# Note: Run, e.g., as python sparql-update.py calvin.ttl insert.rq -localish
+# (I.e. the simple sparql.py does not support updates.)
+
+# Btw. Calvin and Hobbes comics etc. are still (c) by Bill Watterson.
+
+# ON 2015
+
+DELETE { ?p a :Boy }
+INSERT { ?p a :StupendousMan }
+WHERE { ?p foaf:name "Calvin" }
+
+
+

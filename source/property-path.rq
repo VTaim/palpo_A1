@@ -1,0 +1,17 @@
+PREFIX c: <http://example.org/fi-tut-math-sm-calvin-and-hobbes/> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/> 
+
+# Find all persons. (Note that this requires traversing subClassOf paths
+# of arbitrary length -- now done syntactically and not via formal inference!)
+
+SELECT ?s
+WHERE {
+ ?s a ?c .
+ ?c rdfs:subClassOf+ foaf:Person .
+}
+
+
+

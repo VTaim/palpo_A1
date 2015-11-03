@@ -1,0 +1,37 @@
+PREFIX c: <http://example.org/fi-tut-math-sm-calvin-and-hobbes/> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/> 
+
+# How many days is it before the assignment is due? How many leafs students need 
+# still to collect? How many leafs per day?
+
+# Note that the time calculations below are only approximations and results may give
+# negative results... [Tip: Add if clauses to deal with date semantics...])
+
+# In practice, more complicated calculations are best done via some RDF prgramming
+# interface, e.g. with RDFLib using a persistent RDF Store.
+
+# ON 2015
+
+SELECT ?stud ?daysLeft ?leafsNeeded ?leafsPerDay ?comment
+WHERE {
+  ?ba 
+    a :Assignment ;
+    :goal ?goal ;
+    :dueDate ?due ;
+    :hasResults
+      [ :hasPart [:student ?stud; :hasScore ?x] ] .
+  
+  BIND ( year(now())*365 + month(now())*31 + day(now()) AS ?daysNow) 
+  BIND ( year(?due)*365 + month(?due)*31 + day(?due)    AS ?daysDue)  
+  BIND ( ?daysDue - ?daysNow AS ?daysLeft)
+  BIND ( if(?x>=?goal, 0, ?goal-?x) AS ?leafsNeeded)
+  BIND ( if(?daysLeft=0, "-1", ?leafsNeeded / ?daysLeft) AS ?leafsPerDayTemp) # here -1 means too late ...
+  BIND ( ceil(10*?leafsPerDayTemp)/10 AS ?leafsPerDay) # With one decimal precision
+  BIND ( if (?leafsNeeded=0, "Finished!", "Work in progress...") AS ?comment)
+}
+
+
+

@@ -1,0 +1,8 @@
+@prefix : <http://www.tut.fi/example.org/fi-tut-math-sm-calvin-and-hobbes/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fam: <http://purl.org/vocab/relationship/> .
+
+:Calvin 
+  a :Boy;
+  fam:closeFriendOf :Hobbes ;
+  foaf:knows _:x.

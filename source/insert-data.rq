@@ -1,0 +1,15 @@
+PREFIX : <http://example.org/fi-tut-math-sm-calvin-and-hobbes/> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+# Add new statement about Calvin
+# Note: Run, e.g., as python sparql-update.py calvin.ttl insert.rq -localish
+# (I.e. the simple sparql.py does not support updates.)
+
+INSERT DATA
+{
+ :Calvin :likesToPlay :CalvinBall .
+}
+
+
