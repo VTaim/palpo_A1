@@ -1,3 +1,4 @@
-# palpo_A1
+# Semantic Modeling
+Assignment 1
 
-#testi
+Tämä repositorio sisältää Semantic Modeling -kurssin ensimmäisen harjoitustyön ratkaisemisessa tarvittavat tiedostot. Toteuttaneet Valtteri Taimela ja Helge Jalonen
