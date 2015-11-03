@@ -1,0 +1,96 @@
+@prefix : <http://example.org/fi-tut-math-sm-calvin-and-hobbes/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix fam: <http://purl.org/vocab/relationship/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+##############################################################################
+# A sample semantic model about Calvin and Hobbes 
+#
+# ...added some stuff (assignment) for the SPARQL examples...
+#
+# Ossi Nykänen 2015, TUT
+##############################################################################
+
+# First a simple taxonomy (of the main concepts):
+
+:Girl rdfs:subClassOf :Woman .
+:Boy rdfs:subClassOf :Man .
+:Woman rdfs:subClassOf foaf:Person .
+:Man rdfs:subClassOf foaf:Person .
+:AnthropomorphicToy rdfs:subClassOf foaf:Person .
+ 
+# Then explanation of the property :closeFriendOf; it is symmetric, i.e.
+# cFO(x,y) <==> cFO(y,x) . So when the other side is asserted, the other 
+# can be inferred --- but this requires using reasoner software.
+
+:closeFriendOf a owl:SymmetricProperty . 
+ 
+# Let's assert yet another axiom, saying that fam:childOf is
+# inverse of fam:parentOf, i.e. cO(x,y) <==> pO(y,x). 
+ 
+fam:childOf owl:inverseOf fam:parentOf . 
+
+# A simple description of some of the comic's characters:
+
+:Calvin 
+  a :Boy ; # Note that "a" is simply a shorthand for "rdf:type" (+ the @prefix) 
+  foaf:name "Calvin" ;
+  rdfs:seeAlso <https://en.wikipedia.org/wiki/Calvin_and_Hobbes#Calvin> .
+
+:Hobbes 
+  a :Tiger ;
+  a :AnthropomorphicToy ;
+  foaf:name "Hobbes" ;
+  rdfs:seeAlso <https://en.wikipedia.org/wiki/Calvin_and_Hobbes#Hobbes> .
+
+:Susie
+  a :Girl ;
+  foaf:name "Susie Derkins" ;
+  rdfs:seeAlso <https://en.wikipedia.org/wiki/Calvin_and_Hobbes#Susie_Derkins> .
+
+:MissWormwood
+  a :Woman ;
+  a :Teacher ;
+  foaf:name "Miss Wormwood" ;
+  rdfs:seeAlso <https://en.wikipedia.org/wiki/Calvin_and_Hobbes#Miss_Wormwood> .
+
+:CalvinsDad 
+  a :Man ;
+  rdfs:seeAlso <https://en.wikipedia.org/wiki/Calvin_and_Hobbes#Calvin.27s_parents> .
+
+:CalvinsMom
+  a :Woman ;
+  rdfs:seeAlso <https://en.wikipedia.org/wiki/Calvin_and_Hobbes#Calvin.27s_parents> .
+
+# Some relationships
+  
+:Calvin 
+  fam:closeFriendOf :Hobbes ;
+  fam:childOf :CalvinsDad ;
+  fam:childOf :CalvinsMom ;
+  :hasUncle :UncleMax ; # Simple referencing Max, perhaps not a main character?
+  foaf:knows :MissWormWood .
+
+:Susie
+  :friendOf :Calvin . # Note that according to this, it is somewhat unclear if
+                      # Calvin is a friend of Susie.
+
+# A biology assignment by Miss Wormwood (see the comic strip from the slides...)
+# Note that strictly speaking, SPARQL year, month, and day functions are 
+# specified for xsd:dateTime (and not e.g. for xsd:date) (!)
+ 
+_:ba 
+  a :Assignment ;
+  dc:title "Leaf Collection Assigment" ; 
+  :goal 50; # The objective is to collect 50 leafs ...
+  :dueDate "2015-11-16T23:39:59"^^xsd:dateTime ;
+  :hasResults
+    [ 
+      :hasPart [:student :Calvin; :hasScore 7] ;
+      :hasPart [:student :Susie; :hasScore 51]      
+    ] .
+    
+
