@@ -1,7 +1,10 @@
-from rdflib import Graph, URIRef, Literal
+from rdflib import RDF, Graph, URIRef
+from rdflib.parser import Parser
 
 g = Graph()
-result = g.parse("http://www.snee.com/rdf/elvisimp.rdf")
+g.open("store", create=True)
+result = g.parse("http://www.snee.com/rdf/elvisimp.rdf", format='application/rdf+xml')
 
-print ("graph has %s statements." % len(g))
-
+# print out all the triples in the graph
+for subject, predicate, object in g:
+    print subject, predicate, object
