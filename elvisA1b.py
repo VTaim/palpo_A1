@@ -4,28 +4,19 @@
 
 import rdflib
 import logging
-from rdflib import RDF, Graph, URIRef, BNode
+from rdflib import RDF, Graph, URIRef
 from rdflib.parser import Parser
 
-def addIfUnseenRes(r,s):
-  """Add s to r if so far unseen and of proper type (URIRef or BNode)"""
-  if not (type(s) is rdflib.URIRef or type(s) is rdflib.BNode): return
-  if not (s in r): r.append(s)
+# Some data has whitespace in URIs, have to fix that (Source: https://github.com/RDFLib/rdflib/issues/412#issuecomment-50247061)
 
 # In order to get error messages straight from rdflib...
 logging.basicConfig()
 
-# Parse the rdf file and add it to graph g
+# Creating the graph with parser
 g = rdflib.Graph()
-g.parse("elvisimp.rdf", format="application/rdf+xml")
+g.open("store", create=True)
+result = g.parse("http://data.linked-open-science.org/semantic-dogfood/eswc-2013-complete.rdf", format='application/rdf+xml')
 
-# Create a list of all resources (r)
-r = []
-for s,p,o in g:
-  addIfUnseenRes(r,s)
-  addIfUnseenRes(r,p)
-  addIfUnseenRes(r,o)
-
-print("Found total %s resources, namely:"%len(r))
-for n in r: print localish(n),
-print
+# Navigate through the triples, A1b
+for s, p, o in g.triples((None, RDF.type, None)) :
+    print "%s %s"%(s,o)
