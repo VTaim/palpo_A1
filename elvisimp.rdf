@@ -9,10 +9,10 @@
 
      <rdf:Description rdf:about="">
           <dc:creator>Bob DuCharme</dc:creator>
-          <dc:description>Metadata about Elvis impersonators scraped from 
-http://www.gigmasters.com/ElvisImpersonator/ElvisImpersonator.asp and 
+          <dc:description>Metadata about Elvis impersonators scraped from
+http://www.gigmasters.com/ElvisImpersonator/ElvisImpersonator.asp and
 http://dir.yahoo.com/Entertainment/Music/Artists/By_Genre/Rock_and_Pop/Presley__Elvis__1935_1977_/Impersonators/ in March of 2005. At last, the semantic web is complete. See also http://members.terracom.net/~bbibo/biboland/elvi/hall1.htm, which has lots of great non-Elvises. More at http://www.elvistribute.us/impersonators/.</dc:description>
-          <dc:rights rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.0/"/>
+          <dc:rights rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.0/"/>One Night With You Productions
      </rdf:Description>
      <rdf:Description rdf:about="http://www.gigmasters.com/DJ/BILLMCGRATH/">
           <ep:name>One Night With You Productions</ep:name>
@@ -708,10 +708,6 @@ http://dir.yahoo.com/Entertainment/Music/Artists/By_Genre/Rock_and_Pop/Presley__
   <dc:description>UK-based Chinese Elvis impersonator  "The King of Wok'n'Roll."</dc:description>
 </rdf:Description>
 
-<rdf:Description rdf:about="http://www.algonet.se/~pergunne/eilert.html>Pilarm, Eilert">
-  <dc:description>Sweden's most original interpreter of songs made famous by Elvis Presley.</dc:description>
-</rdf:Description>
-
 <rdf:Description rdf:about="http://www.ElvisEntertainers.com" dc:title="Elvis Entertainers Network">
   <dc:description>offers Elvis tribute artists across the United States and parts of Canada.</dc:description>
 </rdf:Description>
@@ -738,10 +734,6 @@ http://dir.yahoo.com/Entertainment/Music/Artists/By_Genre/Rock_and_Pop/Presley__
 
 <rdf:Description rdf:about="http://www.bestelvisinvegas.com" dc:title="Powers, Eddie">
   <dc:description>memories never die if someone is willing to keep them alive.</dc:description>
-</rdf:Description>
-
-<rdf:Description rdf:about="http://members.aol.com/iljat/em.htm>Miles, Eddie">
-  <dc:description>has photos, soundclips, and concert information.</dc:description>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://www.davidlomond.com" dc:title="Lomond, David">
@@ -818,11 +810,6 @@ http://dir.yahoo.com/Entertainment/Music/Artists/By_Genre/Rock_and_Pop/Presley__
 <rdf:Description rdf:about="http://www.elvis4uk.co.uk" dc:title="Rockafella, Louis">
   <dc:description>covering all eras of Elvis' career from 50's Rock 'n' Roll, 60's Movies, and 70's Vegas style.</dc:description>
 </rdf:Description>
-
-<rdf:Description rdf:about="http://members.aol.com/tcb4ep>Alan, Scott">
-  <dc:description>available for bookings.</dc:description>
-</rdf:Description>
-
 
 <rdf:Description rdf:about="http://www.elvis-impersonator.com" dc:title="Evans, Roy">
   <dc:description>offers pictures and discography of the Elvis impersonator. Available for bookings in the U.K.</dc:description>
