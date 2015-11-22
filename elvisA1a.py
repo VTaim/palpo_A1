@@ -21,10 +21,9 @@ logging.basicConfig()
 
 # Creating the graph with parser
 g = rdflib.Graph()
-result = g.parse("http://www.snee.com/rdf/elvisimp.rdf", format='application/rdf+xml')
+result = g.parse("http://data.linked-open-science.org/semantic-dogfood/eswc-2013-complete.rdf", format='application/rdf+xml')
 
 #print everything
-
-for s, p, o in g.triples((None, None, None)):
-  g.add((s,p,o))
-print(g.serialize(format="application/rdf+xml"))
+print("Found total %s resources, namely:"%len(r))
+for n in r: print localish(n),
+print
