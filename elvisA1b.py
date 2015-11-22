@@ -5,9 +5,8 @@
 import rdflib
 import logging
 from rdflib import RDF, Graph, URIRef
+from pprint import pprint
 from rdflib.parser import Parser
-
-# Some data has whitespace in URIs, have to fix that (Source: https://github.com/RDFLib/rdflib/issues/412#issuecomment-50247061)
 
 # In order to get error messages straight from rdflib...
 logging.basicConfig()
@@ -17,6 +16,8 @@ g = rdflib.Graph()
 g.open("store", create=True)
 result = g.parse("http://data.linked-open-science.org/semantic-dogfood/eswc-2013-complete.rdf", format='application/rdf+xml')
 
-# Navigate through the triples, A1b
-for s, p, o in g.triples((None, RDF.type, None)) :
-    print "%s %s"%(s,o)
+#Go through the graph and place LocallyUnknownType if URIRef is unknown
+for s,p,o in g:
+    if not type(s) is rdflib.URIRef:
+        nt=(s,rdflib.RDFS.__class__LocallyUnknownType,o)
+        g.add(nt)
