@@ -28,4 +28,3 @@ result = g.parse("http://www.snee.com/rdf/elvisimp.rdf", format='application/rdf
 for s, p, o in g.triples((None, None, None)):
   g.add((s,p,o))
 print(g.serialize(format="application/rdf+xml"))
-
