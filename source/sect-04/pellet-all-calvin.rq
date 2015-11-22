@@ -1,0 +1,19 @@
+PREFIX : <http://example.org/fi-tut-math-sm-calvin-and-hobbes/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT ?x ?y
+WHERE {
+ :Calvin ?x ?y.
+}
+
+# Running this (and other queries) with Pellet requires, well, Pellet:
+# https://github.com/Complexible/pellet (I'm using version 2.3.1 in the lectures.)
+# ...and Java runtime. This you might already have. If not, see
+# https://www.java.com 
+# 
+# Example (copying calvin example into my directory just under Pellet...): 
+# ./pellet.sh query -q my/pellet-all-calvin.rq my/calvin.ttl
+#
+# ON 2015
